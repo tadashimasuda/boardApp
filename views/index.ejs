@@ -1,11 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>aaå</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <h1>メッセージボード</h1>
+    <form action="/messages/new" method="GET">
+      <input type="submit" value="投稿する">
+    </form>
+
+    <ul>
+      <li>{message.content}</li>
+      <ul>
+        <!-- map() -->
+        <li></li>
+      </ul>
+      <a href="#">詳細へ{message/message.id}</a>
+      <a href="#">編集へ{message/message.id/edit}</a>
+
+      <form action="/messages/" method="POST">
+        
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="削除する">
+      </form>
+    </ul>
+
+
+
   </body>
 </html>
