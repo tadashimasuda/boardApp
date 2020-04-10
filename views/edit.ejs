@@ -6,9 +6,10 @@
     <title>編集</title>
 </head>
 <body>
-    <form action="/messages/" method="POST">
+    <form action="/messages/<%= messages.id %>" method="POST">
         <input type="hidden" name="_method" value="PUT">
-        <input type="text">
+        <input type="text" name="messagesContent" value="<%= messages.content %>">
         <input type="submit" value="編集する">
+    </form>
 </body>
 </html>

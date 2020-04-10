@@ -20,15 +20,15 @@ router.get('/messages/new',(req,res)=>{
 router.post('/messages',messagesController.create);
 
 // //個別ページ
-// router.get('/messages/:id',messagesController.replie);
+//router.get('/messages/:id',messagesController.replie);
 
 // //編集
-// router.get('/messages/:id/edit',messagesController.edit);
+router.get('/messages/:id/edit',messagesController.edit);
 
 // //更新
-// router.put('/messages/:id',messagesController.update);
+router.put('/messages/:id',messagesController.update);
 
 // //削除
-// router.delete('/message/:id',messagesController.delete);
+router.delete('/messages/:id',messagesController.delete);
 
 module.exports = router;
