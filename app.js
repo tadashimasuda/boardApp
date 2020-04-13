@@ -31,7 +31,9 @@ app.use(methodOverride(function (req, res) {
 }));
 var messageRouter = require('./routes/message.js');
 app.use('/', messageRouter);
-//app.use('/users', usersRouter);
+
+var replieRouter = require('./routes/replie.js');
+app.use('/replies',replieRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

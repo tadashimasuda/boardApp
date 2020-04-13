@@ -1,8 +1,17 @@
 const db = require('../models/index');
 exports.index = (req, res) => {
-    db.message.findAll().then((results) => {
+    // db.message.findAll().then((results) => {
+    //     res.render('index.ejs', { messages: results });
+    // });
+
+    const filter = {
+        include:[{
+          model:db.replie
+        }]
+      }
+      db.message.findAll(filter).then((results) => {
         res.render('index.ejs', { messages: results });
-    });
+      });
 }
 
 exports.create = (req, res) => {
@@ -33,5 +42,11 @@ exports.delete = (req, res) => {
     db.message.destroy({ where: { id: req.params.id } }).then((results) => {
         res.redirect('/');
     });
+}
+
+exports.replie = (req,res) =>{
+    db.message.findByPk(req.params.id).then((results) => {
+        res.render('replie.ejs', { messages: results });
+    })
 }
 
