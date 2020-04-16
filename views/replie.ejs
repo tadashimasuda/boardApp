@@ -10,7 +10,8 @@
     <p><%= messages.content %> </p>
 
     <h2>返信する</h2>
-    <form action="/replies/<%= messages.id %>" method="POST">
+    <form action="/replies" method="POST">
+        <input type="hidden" name = "messageId" value="<%= messages.id %>">
         <input type="text" name="replieContent">
         <input type="submit" value="返信する"> 
     </form>

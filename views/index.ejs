@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>aaå</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1>メッセージボード</h1>
-    <form action="/messages/new" method="GET">
-      <input type="submit" value="投稿する">
-    </form>
-    <ul>
-    <% messages.map((message) =>{ %>
-      <li><%= message.content %></li>
-      <ul>
-        <!-- map() -->
-        <li></li>
-      </ul>
-      
-      <a href="messages/<%= message.id %>">詳細へ</a>
-      <a href="messages/<%= message.id %>/edit">編集へ</a>
 
-      <form action="/messages/<%= message.id %>" method="POST">
-        <input type="hidden" name="_method" value="delete">
-        <input type="submit" value="削除する">
-      </form>
+<head>
+  <title>aaå</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <h1>メッセージボード</h1>
+  <form action="/messages/new" method="GET">
+    <input type="submit" value="投稿する">
+  </form>
+  <ul>
+    <% messages.map((message) =>{ %>
+    <li><%= message.content %></li>
+    <ul>
+      <% message.replies.map((replie) => { %>
+      <li><%= replie.content %> </li>
       <% }) %>
     </ul>
+    <a href="messages/<%= message.id %>">詳細へ</a>
+    <a href="messages/<%= message.id %>/edit">編集へ</a>
+
+    <form action="/messages/<%= message.id %>" method="POST">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="削除する">
+    </form>
+    <% }) %>
+  </ul>
 
 
 
-  </body>
+</body>
+
 </html>
