@@ -45,8 +45,20 @@ exports.delete = (req, res) => {
 }
 
 exports.replie = (req,res) =>{
-    db.message.findByPk(req.params.id).then((results) => {
-        res.render('replie.ejs', { messages: results });
-    })
+    // db.message.findByPk(req.params.id).then((results) => {
+    //     //messageのid,contentのため
+    //     res.render('replie.ejs', { messages: results });
+    // })
+    const filter = {
+        include:[{
+          model:db.replie,
+        }]
+      }
+      //where句入れる　req.params.idと一致するもの（messsage,replieで）
+      //message.id = req.params.id,replie.message_id = req.params.id
+      db.message.findAll(filter).then((results) => {
+        console.log(results);
+        res.render('replie.ejs', { messages: results ,id:req.params.id});
+      });
 }
 
