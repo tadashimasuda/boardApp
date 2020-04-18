@@ -7,7 +7,7 @@ exports.create = (req, res) => {
     };
     console.log(params);
     db.replie.create(params).then((results) => {
-        res.redirect('/');
+        res.redirect('/messages/'+req.body.messageId);
     });
  
 }
