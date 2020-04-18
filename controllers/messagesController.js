@@ -6,7 +6,7 @@ exports.index = (req, res) => {
 
     const filter = {
         include: [{
-            model: db.replie
+            model: db.reply
         }]
     }
     db.message.findAll(filter).then((results) => {
@@ -44,21 +44,21 @@ exports.delete = (req, res) => {
     });
 }
 
-exports.replie = (req, res) => {
+exports.reply = (req, res) => {
     // db.message.findByPk(req.params.id).then((results) => {
     //     //messageのid,contentのため
-    //     res.render('replie.ejs', { messages: results });
+    //     res.render('reply.ejs', { messages: results });
     // })
     const filter = {
         include: [{
-            model: db.replie,
+            model: db.reply,
         }]
     }
-    //where句入れる　req.params.idと一致するもの（messsage,replieで）
-    //message.id = req.params.id,replie.message_id = req.params.id
+    //where句入れる　req.params.idと一致するもの（messsage,replyで）
+    //message.id = req.params.id,reply.message_id = req.params.id
     db.message.findAll(filter).then((results) => {
         console.log(results);
-        res.render('replie.ejs', { messages: results, id: req.params.id });
+        res.render('reply.ejs', { messages: results, id: req.params.id });
     });
 }
 
