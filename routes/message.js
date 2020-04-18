@@ -13,7 +13,7 @@ router.get('/message', messagesController.index);
 //新規作成 　redirect 
 //コントローラ経由でもいいかな
 router.get('/messages/new',(req,res)=>{
-    res.render('create');
+    res.render('new');
 });
 
 //新規作成

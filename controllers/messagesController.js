@@ -16,7 +16,7 @@ exports.index = (req, res) => {
 
 exports.create = (req, res) => {
     const params = {
-        content: req.body.messagesContent
+        content: req.body.messageContent
     };
     db.message.create(params).then((results) => {
         res.redirect('/');
@@ -31,9 +31,9 @@ exports.edit = (req, res) => {
 
 exports.update = (req, res) => {
     const params = {
-        content: req.body.messagesContent
+        content: req.body.messageContent
     };
-    db.message.update({ content: req.body.messagesContent }, { where: { id: req.params.id } }).then((results) => {
+    db.message.update({ content: req.body.messageContent }, { where: { id: req.params.id } }).then((results) => {
         res.redirect('/');
     });
 }
