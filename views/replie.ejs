@@ -1,19 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <h1>メッセージ</h1>
-    <p><%= messages.content %> </p>
 
-    <h2>返信する</h2>
-    <form action="/replies" method="POST">
-        <input type="hidden" name = "messageId" value="<%= messages.id %>">
-        <input type="text" name="replieContent">
-        <input type="submit" value="返信する"> 
-    </form>
+<body>
+        <h1>メッセージ</h1>        
+        <% messages.map((message) =>{ %>
+            <% if(id == message.id) {　%>
+                <p><%= message.content %> </p>
+                <ul>
+                    <% message.replies.map((replie) => { %>
+                    <li><%= replie.content %> </li>
+                    <% }) %>
+                </ul>
+                <h2>返信する</h2>
+                <form action="/replies" method="POST">
+                    <input type="hidden" name="messageId" value="<%= id %>">
+                    <input type="text" name="replieContent">
+                    <input type="submit" value="返信する">
+                </form>
+            <% } %>
+        <% }) %>
 </body>
+
 </html>
