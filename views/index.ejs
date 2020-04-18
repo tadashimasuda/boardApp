@@ -15,8 +15,8 @@
     <% messages.map((message) =>{ %>
     <li><%= message.content %></li>
     <ul>
-      <% message.replies.map((replie) => { %>
-      <li><%= replie.content %> </li>
+      <% message.replies.map((reply) => { %>
+      <li><%= reply.content %> </li>
       <% }) %>
     </ul>
     <a href="messages/<%= message.id %>">詳細へ</a>

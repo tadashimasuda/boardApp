@@ -20,7 +20,7 @@ router.get('/messages/new',(req,res)=>{
 router.post('/messages',messagesController.create);
 
 // //個別ページ
-router.get('/messages/:id',messagesController.replie);
+router.get('/messages/:id',messagesController.reply);
 
 // //編集
 router.get('/messages/:id/edit',messagesController.edit);

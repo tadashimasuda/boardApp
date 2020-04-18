@@ -13,14 +13,14 @@
             <% if(id == message.id) {　%>
                 <p><%= message.content %> </p>
                 <ul>
-                    <% message.replies.map((replie) => { %>
-                    <li><%= replie.content %> </li>
+                    <% message.replies.map((reply) => { %>
+                    <li><%= reply.content %> </li>
                     <% }) %>
                 </ul>
                 <h2>返信する</h2>
                 <form action="/replies" method="POST">
                     <input type="hidden" name="messageId" value="<%= id %>">
-                    <input type="text" name="replieContent">
+                    <input type="text" name="replyContent">
                     <input type="submit" value="返信する">
                 </form>
             <% } %>

@@ -1,14 +1,14 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const replie = sequelize.define('replie', {
+  const reply = sequelize.define('reply', {
     message_id: DataTypes.INTEGER,
     content:'char()',
   }, {
     underscored: true,
   });
-  replie.associate = function(models) {
+  reply.associate = function(models) {
     // associations can be defined here
-    replie.belongsTo(models.message);
+    reply.belongsTo(models.message);
   };
-  return replie;
+  return reply;
 };
