@@ -10,6 +10,7 @@ exports.index = (req, res) => {
         }]
     }
     db.message.findAll(filter).then((results) => {
+        console.log('データ:'+results)
         res.render('index.ejs', { messages: results });
     });
 }
@@ -30,10 +31,15 @@ exports.edit = (req, res) => {
 }
 
 exports.update = (req, res) => {
-    const params = {
-        content: req.body.messageContent
-    };
-    db.message.update({ content: req.body.messageContent }, { where: { id: req.params.id } }).then((results) => {
+    db.message.update({ 
+            content: req.body.messageContent 
+    },
+    { 
+    where: { 
+             id: req.params.id 
+            } 
+        }
+    ).then((results) => {
         res.redirect('/');
     });
 }
@@ -56,9 +62,9 @@ exports.reply = (req, res) => {
     }
     //where句入れる　req.params.idと一致するもの（messsage,replyで）
     //message.id = req.params.id,reply.message_id = req.params.id
-    db.message.findAll(filter).then((results) => {
+    db.message.findByPk(req.params.id,filter).then((results) => {
         console.log(results);
-        res.render('reply.ejs', { messages: results, id: req.params.id });
+        res.render('reply.ejs', { message: results});
     });
 }
 

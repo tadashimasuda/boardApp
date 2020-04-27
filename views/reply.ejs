@@ -8,23 +8,21 @@
 </head>
 
 <body>
-        <h1>メッセージ</h1>        
-        <% messages.map((message) =>{ %>
-            <% if(id == message.id) {　%>
-                <p><%= message.content %> </p>
-                <ul>
-                    <% message.replies.map((reply) => { %>
-                    <li><%= reply.content %> </li>
-                    <% }) %>
-                </ul>
-                <h2>返信する</h2>
-                <form action="/replies" method="POST">
-                    <input type="hidden" name="messageId" value="<%= id %>">
-                    <input type="text" name="replyContent">
-                    <input type="submit" value="返信する">
-                </form>
-            <% } %>
+    <h1>メッセージ</h1>
+    
+    <p><%= message.content %> </p>
+    <ul>
+        <% message.replies.map((reply) => { %>
+        <li><%= reply.content %> </li>
         <% }) %>
+    </ul>
+    <h2>返信する</h2>
+    <form action="/replies" method="POST">
+        <input type="hidden" name="messageId" value="<%= message.id %>">
+        <input type="text" name="replyContent">
+        <input type="submit" value="返信する">
+    </form>
+    
 </body>
 
 </html>
